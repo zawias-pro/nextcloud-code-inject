@@ -2,7 +2,9 @@
 <info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>codeinjector</id>
+    <name lang="pl">Wstrzykiwacz kodu</name>
     <name>Code Injector</name>
+    <summary lang="pl">Wstrzyknij własny kod HTML do nagłówka lub treści każdej strony</summary>
     <summary>Inject custom HTML into every page head or body</summary>
     <description><![CDATA[Allows administrators to inject arbitrary HTML code into the `<head>` or `<body>` of every Nextcloud page.
 
@@ -12,8 +14,7 @@ Common use cases include:
 - External stylesheet or script references
 - Tag manager containers (Google Tag Manager, etc.)
 - Custom branding elements
-
-**Note:** Inline `<script>` content requires the Nextcloud Content Security Policy to allow `unsafe-inline` scripts, or the injected script must use a nonce. External scripts loaded via `src` attribute work without CSP changes.]]></description>
+</description>
     <version>1.0.0</version>
     <licence>AGPL-3.0-or-later</licence>
     <author homepage="https://github.com/zawias-pro">Paweł Zawiślak</author>

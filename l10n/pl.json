@@ -1,0 +1,17 @@
+{
+    "translations": {
+        "Code Injector": "Wstrzykiwacz kodu",
+        "Inject custom HTML into every Nextcloud page. Changes take effect immediately after saving.": "Wstrzyknij własny kod HTML na każdą stronę Nextcloud. Zmiany wchodzą w życie natychmiast po zapisaniu.",
+        "Saved": "Zapisano",
+        "Save": "Zapisz",
+        "Head HTML": "Kod HTML <head>",
+        "Injected before </head> — use for <meta>, <link>, <script src>, analytics snippets, etc.": "Wstrzykiwany przed </head> — użyj dla <meta>, <link>, <script src>, fragmentów analityki itp.",
+        "Body HTML": "Kod HTML <body>",
+        "Injected before </body> — use for chat widgets, cookie banners, GTM noscript tags, etc.": "Wstrzykiwany przed </body> — użyj dla widżetów czatu, banerów cookies, tagów noscript GTM itp.",
+        "CSP Editor app detected and enabled (%s). You can manage advanced CSP rules there: ": "Wykryto i włączono aplikację CSP Editor (%s). Możesz tam zarządzać zaawansowanymi regułami CSP: ",
+        "Open CSP Editor": "Otwórz CSP Editor",
+        "CSP Editor app is not detected. Install/enable it if you prefer dedicated CSP management. If installed, open: ": "Nie wykryto aplikacji CSP Editor. Zainstaluj/włącz ją, jeśli wolisz dedykowane zarządzanie CSP. Jeśli jest zainstalowana, otwórz: ",
+        "CSP settings page": "Strona ustawień CSP"
+    },
+    "pluralForm" :"nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+}

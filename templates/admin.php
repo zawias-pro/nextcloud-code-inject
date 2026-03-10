@@ -12,11 +12,6 @@
 		</p>
 	</div>
 
-	<div class="codeinjector-notice">
-		<span class="icon icon-info"></span>
-		<?php p($l->t('External scripts and stylesheets work without extra configuration. Inline <script> content may be blocked by the default Content Security Policy. Use the placeholder {{csp_nonce}} to automatically insert the current request\'s CSP nonce.')); ?>
-	</div>
-
 	<?php if (!empty($_['saved'])): ?>
 		<div class="codeinjector-notice codeinjector-notice--success">
 			<span class="icon icon-checkmark"></span>
