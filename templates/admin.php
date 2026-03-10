@@ -33,7 +33,7 @@
 		</div>
 	<?php endif; ?>
 
-	<form method="post" action="/apps/codeinjector/settings">
+	<form id="codeinjector-form" method="post" action="/apps/codeinjector/settings">
 		<div class="codeinjector-field">
 			<label for="codeinjector-head-html">
 				<strong><?php p($l->t('Head HTML')); ?></strong>

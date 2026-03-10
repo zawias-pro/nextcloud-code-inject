@@ -23,6 +23,7 @@ class AdminSettings implements ISettings {
 
 	public function getForm(): TemplateResponse {
 		Util::addStyle(Application::APP_ID, 'admin');
+		Util::addScript(Application::APP_ID, 'admin');
 		$cspEditorAppId = $this->detectCspEditorAppId();
 
 		return new TemplateResponse(Application::APP_ID, 'admin', [
