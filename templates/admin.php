@@ -14,7 +14,7 @@
 
 	<div class="codeinjector-notice">
 		<span class="icon icon-info"></span>
-		<?php p($l->t('External scripts and stylesheets work without extra configuration. Inline <script> content may be blocked by the default Content Security Policy.')); ?>
+		<?php p($l->t('External scripts and stylesheets work without extra configuration. Inline <script> content may be blocked by the default Content Security Policy. Use the placeholder {{csp_nonce}} to automatically insert the current request\'s CSP nonce.')); ?>
 	</div>
 
 	<?php if (!empty($_['saved'])): ?>
@@ -46,14 +46,14 @@
 					<?php p($l->t('Injected before </head> — use for <meta>, <link>, <script src>, analytics snippets, etc.')); ?>
 				</span>
 			</label>
-			<textarea
-				id="codeinjector-head-html"
-				name="headHtml"
-				class="codeinjector-textarea"
-				rows="10"
-				spellcheck="false"
-				placeholder="<?php p($l->t('<!-- Example: Google Tag Manager snippet -->')); ?>"
-			><?php p($_['head_html']); ?></textarea>
+		<textarea
+			id="codeinjector-head-html"
+			name="headHtml"
+			class="codeinjector-textarea"
+			rows="10"
+			spellcheck="false"
+			placeholder="<?php p($l->t('<script nonce="{{csp_nonce}}">/* Example inline script */</script>')); ?>"
+		><?php p($_['head_html']); ?></textarea>
 		</div>
 
 		<div class="codeinjector-field">
