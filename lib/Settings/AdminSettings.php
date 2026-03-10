@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace OCA\CodeInjector\Settings;
+namespace OCA\Codeinjector\Settings;
 
-use OCA\CodeInjector\AppInfo\Application;
+use OCA\Codeinjector\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\IAppConfig;
+use OCP\IConfig;
 use OCP\Settings\ISettings;
 use OCP\Util;
 
 class AdminSettings implements ISettings {
 
 	public function __construct(
-		private readonly IAppConfig $appConfig,
+		private readonly IConfig $config,
 	) {
 	}
 
@@ -22,8 +22,8 @@ class AdminSettings implements ISettings {
 		Util::addStyle(Application::APP_ID, 'admin');
 
 		return new TemplateResponse(Application::APP_ID, 'admin', [
-			'head_html' => $this->appConfig->getValueString(Application::APP_ID, 'head_html', ''),
-			'body_html' => $this->appConfig->getValueString(Application::APP_ID, 'body_html', ''),
+			'head_html' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),
+			'body_html' => $this->config->getAppValue(Application::APP_ID, 'body_html', ''),
 		]);
 	}
 

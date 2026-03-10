@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace OCA\CodeInjector\AppInfo;
+namespace OCA\Codeinjector\AppInfo;
 
-use OCA\CodeInjector\Listener\TemplateListener;
+use OCA\Codeinjector\Listener\TemplateListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
-use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
+use OCP\EventDispatcher\Event;
+use OCP\EventDispatcher\IEventDispatcher;
 
 class Application extends App implements IBootstrap {
 
@@ -20,13 +22,15 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function register(IRegistrationContext $context): void {
-		// Inject HTML on every page load (both logged-in and public pages)
-		$context->registerEventListener(
-			TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS,
-			TemplateListener::class
-		);
+		// Intentionally empty. Event listener is attached in boot() via closure.
 	}
 
 	public function boot(IBootContext $context): void {
+		$context->injectFn(function (IEventDispatcher $dispatcher): void {
+			$listener = new TemplateListener();
+			$dispatcher->addListener(BeforeTemplateRenderedEvent::class, function (Event $event) use ($listener): void {
+				$listener->handle($event);
+			});
+		});
 	}
 }

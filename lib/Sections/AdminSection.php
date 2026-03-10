@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OCA\CodeInjector\Sections;
+namespace OCA\Codeinjector\Sections;
 
-use OCA\CodeInjector\AppInfo\Application;
+use OCA\Codeinjector\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;

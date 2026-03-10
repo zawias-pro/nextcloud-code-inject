@@ -11,7 +11,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"OCA\\CodeInjector\\": "lib/"
+			"OCA\\Codeinjector\\": "lib/"
 		}
 	},
 	"require": {

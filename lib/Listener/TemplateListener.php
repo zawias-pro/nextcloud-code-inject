@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OCA\CodeInjector\Listener;
+namespace OCA\Codeinjector\Listener;
 
-use OCA\CodeInjector\AppInfo\Application;
+use OCA\Codeinjector\AppInfo\Application;
+use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
-use OCP\IAppConfig;
+use OCP\IConfig;
+use OCP\Server;
 use OCP\Util;
 
 /**
@@ -15,18 +17,18 @@ use OCP\Util;
  * by publishing data via Nextcloud's initial-state mechanism and loading
  * the client-side injector script.
  *
- * @template-implements IEventListener<Event>
+ * @template-implements IEventListener<BeforeTemplateRenderedEvent>
  */
 class TemplateListener implements IEventListener {
 
-	public function __construct(
-		private readonly IAppConfig $appConfig,
-	) {
-	}
-
 	public function handle(Event $event): void {
-		$headHtml = $this->appConfig->getValueString(Application::APP_ID, 'head_html', '');
-		$bodyHtml = $this->appConfig->getValueString(Application::APP_ID, 'body_html', '');
+		if (!($event instanceof BeforeTemplateRenderedEvent)) {
+			return;
+		}
+
+		$config = Server::get(IConfig::class);
+		$headHtml = $config->getAppValue(Application::APP_ID, 'head_html', '');
+		$bodyHtml = $config->getAppValue(Application::APP_ID, 'body_html', '');
 
 		if ($headHtml === '' && $bodyHtml === '') {
 			return;
