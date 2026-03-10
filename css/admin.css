@@ -27,6 +27,16 @@
 	margin-top: 2px;
 }
 
+.codeinjector-notice--success {
+	border-left-color: var(--color-success, #46ba61);
+	background: color-mix(in srgb, var(--color-success, #46ba61) 12%, var(--color-main-background, #fff));
+}
+
+.codeinjector-notice--warning {
+	border-left-color: var(--color-warning, #e9a800);
+	background: color-mix(in srgb, var(--color-warning, #e9a800) 12%, var(--color-main-background, #fff));
+}
+
 .codeinjector-field {
 	margin-bottom: 28px;
 }

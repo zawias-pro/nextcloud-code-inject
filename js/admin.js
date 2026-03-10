@@ -12,9 +12,10 @@
 		var saveBtn  = document.getElementById('codeinjector-save');
 		var headArea = document.getElementById('codeinjector-head-html');
 		var bodyArea = document.getElementById('codeinjector-body-html');
+		var cspArea  = document.getElementById('codeinjector-csp-rules');
 		var msgEl    = document.getElementById('codeinjector-msg');
 
-		if (!saveBtn || !headArea || !bodyArea || !msgEl) {
+		if (!saveBtn || !headArea || !bodyArea || !cspArea || !msgEl) {
 			return;
 		}
 
@@ -45,6 +46,7 @@
 				body: JSON.stringify({
 					headHtml: headArea.value,
 					bodyHtml: bodyArea.value,
+					cspRules: cspArea.value,
 				}),
 			})
 				.then(function (response) {

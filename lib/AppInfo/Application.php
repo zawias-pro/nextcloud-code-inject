@@ -12,6 +12,7 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventDispatcher;
+use OCP\Security\CSP\AddContentSecurityPolicyEvent;
 
 class Application extends App implements IBootstrap {
 
@@ -29,6 +30,9 @@ class Application extends App implements IBootstrap {
 		$context->injectFn(function (IEventDispatcher $dispatcher): void {
 			$listener = new TemplateListener();
 			$dispatcher->addListener(BeforeTemplateRenderedEvent::class, function (Event $event) use ($listener): void {
+				$listener->handle($event);
+			});
+			$dispatcher->addListener(AddContentSecurityPolicyEvent::class, function (Event $event) use ($listener): void {
 				$listener->handle($event);
 			});
 		});

@@ -25,9 +25,10 @@ class SettingsController extends Controller {
 	 * Persist head and body HTML snippets. Only accessible to Nextcloud admins.
 	 */
 	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
-	public function save(string $headHtml = '', string $bodyHtml = ''): DataResponse {
+	public function save(string $headHtml = '', string $bodyHtml = '', string $cspRules = ''): DataResponse {
 		$this->config->setAppValue(Application::APP_ID, 'head_html', $headHtml);
 		$this->config->setAppValue(Application::APP_ID, 'body_html', $bodyHtml);
+		$this->config->setAppValue(Application::APP_ID, 'csp_rules', $cspRules);
 
 		return new DataResponse(['status' => 'ok']);
 	}
@@ -40,6 +41,7 @@ class SettingsController extends Controller {
 		return new DataResponse([
 			'headHtml' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),
 			'bodyHtml' => $this->config->getAppValue(Application::APP_ID, 'body_html', ''),
+			'cspRules' => $this->config->getAppValue(Application::APP_ID, 'csp_rules', ''),
 		]);
 	}
 }
