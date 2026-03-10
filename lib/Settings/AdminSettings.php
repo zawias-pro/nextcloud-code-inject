@@ -8,6 +8,7 @@ use OCA\Codeinjector\AppInfo\Application;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
+use OCP\IRequest;
 use OCP\Settings\ISettings;
 use OCP\Util;
 
@@ -16,17 +17,18 @@ class AdminSettings implements ISettings {
 	public function __construct(
 		private readonly IConfig $config,
 		private readonly IAppManager $appManager,
+		private readonly IRequest $request,
 	) {
 	}
 
 	public function getForm(): TemplateResponse {
-		Util::addScript(Application::APP_ID, 'admin');
 		Util::addStyle(Application::APP_ID, 'admin');
 		$cspEditorAppId = $this->detectCspEditorAppId();
 
 		return new TemplateResponse(Application::APP_ID, 'admin', [
 			'head_html' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),
 			'body_html' => $this->config->getAppValue(Application::APP_ID, 'body_html', ''),
+			'saved' => $this->request->getParam('saved') === '1',
 			'csp_editor_detected' => $cspEditorAppId !== null,
 			'csp_editor_app_id' => $cspEditorAppId ?? '',
 			'csp_editor_url' => '/settings/admin/additional',

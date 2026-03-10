@@ -8,7 +8,9 @@ use OCA\Codeinjector\AppInfo\Application;
 use OCA\Codeinjector\Settings\AdminSettings;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\RedirectResponse;
 use OCP\IConfig;
 use OCP\IRequest;
 
@@ -25,11 +27,12 @@ class SettingsController extends Controller {
 	 * Persist head and body HTML snippets. Only accessible to Nextcloud admins.
 	 */
 	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
-	public function save(string $headHtml = '', string $bodyHtml = ''): DataResponse {
+	#[NoCSRFRequired]
+	public function save(string $headHtml = '', string $bodyHtml = ''): RedirectResponse {
 		$this->config->setAppValue(Application::APP_ID, 'head_html', $headHtml);
 		$this->config->setAppValue(Application::APP_ID, 'body_html', $bodyHtml);
 
-		return new DataResponse(['status' => 'ok']);
+		return new RedirectResponse('/settings/admin/' . Application::APP_ID . '?saved=1');
 	}
 
 	/**
