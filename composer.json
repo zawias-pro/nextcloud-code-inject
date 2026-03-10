@@ -1,0 +1,37 @@
+{
+	"name": "zawias-pro/codeinjector",
+	"description": "Inject custom HTML code into the head or body of every Nextcloud page",
+	"type": "nextcloud-app",
+	"license": "AGPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Paweł Zawiślak",
+			"homepage": "https://github.com/zawias-pro"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"OCA\\CodeInjector\\": "lib/"
+		}
+	},
+	"require": {
+		"php": ">=8.1"
+	},
+	"require-dev": {
+		"nextcloud/ocp": "^29.0",
+		"phpunit/phpunit": "^10.0",
+		"vimeo/psalm": "^5.0",
+		"psalm/plugin-phpunit": "^0.19"
+	},
+	"config": {
+		"platform": {
+			"php": "8.1"
+		},
+		"optimize-autoloader": true,
+		"sort-packages": true
+	},
+	"scripts": {
+		"psalm": "psalm",
+		"test": "phpunit tests/"
+	}
+}
