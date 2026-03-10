@@ -14,7 +14,7 @@ Common use cases include:
 - External stylesheet or script references
 - Tag manager containers (Google Tag Manager, etc.)
 - Custom branding elements
-</description>
+]]></description>
     <version>1.0.0</version>
     <licence>AGPL-3.0-or-later</licence>
     <author homepage="https://github.com/zawias-pro">Paweł Zawiślak</author>
