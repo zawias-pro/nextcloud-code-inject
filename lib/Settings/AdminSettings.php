@@ -27,7 +27,6 @@ class AdminSettings implements ISettings {
 		return new TemplateResponse(Application::APP_ID, 'admin', [
 			'head_html' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),
 			'body_html' => $this->config->getAppValue(Application::APP_ID, 'body_html', ''),
-			'csp_rules' => $this->config->getAppValue(Application::APP_ID, 'csp_rules', ''),
 			'csp_editor_detected' => $cspEditorAppId !== null,
 			'csp_editor_app_id' => $cspEditorAppId ?? '',
 			'csp_editor_url' => '/settings/admin/additional',

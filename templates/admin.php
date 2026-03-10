@@ -3,7 +3,7 @@
 /** @var array $_ */
 ?>
 
-<div id="codeinjector-settings">
+<div id="section">
 
 	<div class="codeinjector-header">
 		<h2><?php p($l->t('Code Injector')); ?></h2>
@@ -61,25 +61,6 @@
 			spellcheck="false"
 			placeholder="<?php p($l->t('<!-- Example: noscript fallback for GTM -->')); ?>"
 		><?php p($_['body_html']); ?></textarea>
-	</div>
-
-	<div class="codeinjector-field">
-		<label for="codeinjector-csp-rules">
-			<strong><?php p($l->t('Additional CSP rules')); ?></strong>
-			<span class="codeinjector-sublabel">
-				<?php p($l->t('One directive per line, e.g. script-src https://www.googletagmanager.com or connect-src https://api.example.com')); ?>
-			</span>
-			<span class="codeinjector-sublabel">
-				<?php p($l->t('Supported directives: script-src, style-src, font-src, img-src, connect-src, media-src, object-src, frame-src, child-src, frame-ancestors, worker-src, form-action, and flags like use-js-nonce.')); ?>
-			</span>
-		</label>
-		<textarea
-			id="codeinjector-csp-rules"
-			class="codeinjector-textarea"
-			rows="8"
-			spellcheck="false"
-			placeholder="<?php p($l->t("script-src https://www.googletagmanager.com\nconnect-src https://www.google-analytics.com")); ?>"
-		><?php p($_['csp_rules']); ?></textarea>
 	</div>
 
 	<div class="codeinjector-actions">
