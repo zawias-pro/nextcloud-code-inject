@@ -18,10 +18,7 @@
 		"php": ">=8.1"
 	},
 	"require-dev": {
-		"nextcloud/ocp": "^29.0",
-		"phpunit/phpunit": "^10.0",
-		"vimeo/psalm": "^5.0",
-		"psalm/plugin-phpunit": "^0.19"
+		"nextcloud/ocp": "^29.0"
 	},
 	"config": {
 		"platform": {
@@ -29,9 +26,5 @@
 		},
 		"optimize-autoloader": true,
 		"sort-packages": true
-	},
-	"scripts": {
-		"psalm": "psalm",
-		"test": "phpunit tests/"
 	}
 }
