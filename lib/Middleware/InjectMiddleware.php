@@ -8,17 +8,17 @@ use OCA\Codeinjector\AppInfo\Application;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Middleware;
 use OCP\IConfig;
-use OCP\Server;
+use Psr\Log\LoggerInterface;
 
 /**
  * Middleware to inject custom HTML into the response.
  */
 class InjectMiddleware extends Middleware {
 
-	private IConfig $config;
-
-	public function __construct(IConfig $config) {
-		$this->config = $config;
+	public function __construct(
+		private readonly IConfig $config,
+		private readonly LoggerInterface $logger,
+	) {
 	}
 
 	/**
@@ -34,27 +34,22 @@ class InjectMiddleware extends Middleware {
 		}
 
 		$nonce = '';
-		// Try to get the nonce from the internal manager if available.
-		// Use string class name to avoid direct dependency on private namespace in code.
-		$nonceManagerClass = 'OC\\Security\\CSP\\ContentSecurityPolicyNonceManager';
-		if (class_exists($nonceManagerClass)) {
-			try {
-				$nonceManager = Server::get($nonceManagerClass);
-				if (method_exists($nonceManager, 'getNonce')) {
-					$nonce = $nonceManager->getNonce();
-				}
-			} catch (\Throwable) {
-				// Ignore errors if manager cannot be resolved
-			}
+		if (preg_match('/<script[\s\S]*?nonce="([^"]+)"/i', $output, $matches)) {
+			$nonce = $matches[1];
 		}
 
-		if ($nonce !== '') {
-			$headHtml = str_replace('{{csp_nonce}}', $nonce, $headHtml);
-			$bodyBeforeHtml = str_replace('{{csp_nonce}}', $nonce, $bodyBeforeHtml);
-			$bodyAfterHtml = str_replace('{{csp_nonce}}', $nonce, $bodyAfterHtml);
+		if ($nonce === '') {
+			$this->logger->warning(
+				'Could not extract CSP nonce from page output; {{csp_nonce}} placeholders will not be replaced.',
+				['app' => Application::APP_ID]
+			);
 		}
 
-		if ($headHtml !== '' && str_contains($output, '</head>')) {
+        $headHtml = str_replace('{{csp_nonce}}', $nonce, $headHtml);
+        $bodyBeforeHtml = str_replace('{{csp_nonce}}', $nonce, $bodyBeforeHtml);
+        $bodyAfterHtml = str_replace('{{csp_nonce}}', $nonce, $bodyAfterHtml);
+
+		if ($headHtml !== '') {
 			$output = str_replace('</head>', $headHtml . "\n</head>", $output);
 		}
 
