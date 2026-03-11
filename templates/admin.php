@@ -16,7 +16,7 @@
             </strong>
         </p>
         <p>
-            <?php p($l->t('You can use <code>{{csp_nonce}}</code> placeholder where you need CSP nonce token.')); ?>
+            <?php print_unescaped($l->t('You can use %s placeholder where you need a CSP nonce token.', ['<code>{{csp_nonce}}</code>'])); ?>
         </p>
         <?php if (!empty($_['saved'])): ?>
             <div class="codeinjector__notice codeinjector__notice--success">
@@ -29,15 +29,16 @@
                 <span class="icon icon-checkmark"></span>
                 <div>
                     <?php p($l->t('CSP Editor app detected and enabled. You can manage CSP rules there: ')); ?>
-                    <a href="/settings/admin/additional"><?php p($l->t('Open CSP Editor')); ?></a>
+                    <a href="/settings/admin/additional"><?php p($l->t('CSP Editor')); ?></a>
                 </div>
             </div>
         <?php else: ?>
             <div class="codeinjector__notice codeinjector__notice--warning">
                 <span class="icon icon-alert-outline"></span>
                 <div>
-                    <?php p($l->t('CSP Editor app is not detected. You want to use it if your scripts need CSP rules:')); ?>
-                    <a href="/settings/apps/tools/csp_editor" target="_blank">install</a>
+                    <?php print_unescaped($l->t('%s is not enabled. You want to use it if your scripts need CSP rules.', [
+                        '<a href="/settings/apps/tools/csp_editor" target="_blank">CSP Editor</a>'
+                    ])); ?>
                 </div>
             </div>
         <?php endif; ?>
