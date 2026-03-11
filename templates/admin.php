@@ -9,14 +9,14 @@
             <?php p($l->t('Custom HTML')); ?>
         </h2>
         <p>
-            <?php p($l->t('Adds custom HTML to every page (including login page), for all users.')); ?>
+            <?php p($l->t('Injects custom HTML into every Nextcloud page, including the login page.')); ?>
             <?php p($l->t('Changes take effect immediately after saving.')); ?>
             <strong>
-                <?php p($l->t('Make sure you know what you do. Saving wrong code can cause the app to crash for everyone.')); ?>
+                <?php p($l->t('Be careful! Invalid code can break the app for all users.')); ?>
             </strong>
         </p>
         <p>
-            <?php print_unescaped($l->t('You can use %s placeholder where you need a CSP nonce token.', ['<code>{{csp_nonce}}</code>'])); ?>
+            <?php print_unescaped($l->t('Use the %s placeholder wherever a CSP nonce is required.', ['<code>{{csp_nonce}}</code>'])); ?>
         </p>
         <?php if (!empty($_['saved'])): ?>
             <div class="codeinjector__notice codeinjector__notice--success">
@@ -28,7 +28,7 @@
             <div class="codeinjector__notice codeinjector__notice--success">
                 <span class="icon icon-checkmark"></span>
                 <div>
-                    <?php p($l->t('CSP Editor app detected and enabled. You can manage CSP rules there: ')); ?>
+                    <?php p($l->t('CSP Editor is active. Manage your Content Security Policy rules:')); ?>
                     <a href="/settings/admin/additional"><?php p($l->t('CSP Editor')); ?></a>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <div class="codeinjector__notice codeinjector__notice--warning">
                 <span class="icon icon-alert-outline"></span>
                 <div>
-                    <?php print_unescaped($l->t('%s is not enabled. You want to use it if your scripts need CSP rules.', [
+                    <?php print_unescaped($l->t('%s is not enabled. Enable it if your injected scripts require CSP rules.', [
                         '<a href="/settings/apps/tools/csp_editor" target="_blank">CSP Editor</a>'
                     ])); ?>
                 </div>
