@@ -8,7 +8,7 @@ use OCA\Codeinjector\AppInfo\Application;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
-use OCP\IRequest;
+use OCP\ISession;
 use OCP\Settings\ISettings;
 use OCP\Util;
 
@@ -17,7 +17,7 @@ class AdminSettings implements ISettings {
 	public function __construct(
 		private readonly IConfig $config,
 		private readonly IAppManager $appManager,
-		private readonly IRequest $request,
+		private readonly ISession $session,
 	) {
 	}
 
@@ -26,11 +26,15 @@ class AdminSettings implements ISettings {
 		Util::addScript(Application::APP_ID, 'admin');
 		$cspEditorAppId = $this->detectCspEditorAppId();
 
+		$sessionKey = Application::APP_ID . '_saved';
+		$saved = $this->session->get($sessionKey) === true;
+		$this->session->remove($sessionKey);
+
 		return new TemplateResponse(Application::APP_ID, 'admin', [
 			'head_html' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),
 			'body_before_html' => $this->config->getAppValue(Application::APP_ID, 'body_before_html', ''),
 			'body_after_html' => $this->config->getAppValue(Application::APP_ID, 'body_after_html', ''),
-			'saved' => $this->request->getParam('saved') === '1',
+			'saved' => $saved,
 			'csp_editor_detected' => $cspEditorAppId !== null,
 			'csp_editor_app_id' => $cspEditorAppId ?? '',
 			'csp_editor_url' => '/settings/admin/additional',

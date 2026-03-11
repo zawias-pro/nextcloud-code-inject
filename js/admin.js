@@ -1,5 +1,4 @@
 (function () {
-	console.log('start')
 	var dirty = false;
 
 	document.querySelectorAll('#codeinjector-form textarea').forEach(function (el) {
