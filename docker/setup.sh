@@ -37,9 +37,6 @@ docker compose exec -T --user root nextcloud sh -c "chown -R www-data:www-data /
 docker compose exec -T --user root nextcloud sh -c "find /var/www/html/custom_apps -path '*/.git' -prune -o -exec chown www-data:www-data {} +"
 docker compose exec -T --user root nextcloud sh -c "find /var/www/html/custom_apps -path '*/.git' -prune -o -exec chmod u+rwX {} +"
 
-echo "▶  Disabling App Store in this test environment…"
-$OCC config:system:set appstoreenabled --type=boolean --value=false
-
 echo "▶  Enabling codeinjector…"
 $OCC app:enable codeinjector
 
