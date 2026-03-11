@@ -23,10 +23,8 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function register(IRegistrationContext $context): void {
-		// Register the middleware globally to intercept all AppFramework responses
 		$context->registerMiddleware(InjectMiddleware::class, true);
 	}
 
-	public function boot(IBootContext $context): void {
-	}
+	public function boot(IBootContext $context): void {}
 }

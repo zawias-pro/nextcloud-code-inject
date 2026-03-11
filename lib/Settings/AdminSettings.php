@@ -18,36 +18,23 @@ class AdminSettings implements ISettings {
 		private readonly IConfig $config,
 		private readonly IAppManager $appManager,
 		private readonly ISession $session,
-	) {
-	}
+	) {}
 
 	public function getForm(): TemplateResponse {
 		Util::addStyle(Application::APP_ID, 'admin');
 		Util::addScript(Application::APP_ID, 'admin');
-		$cspEditorAppId = $this->detectCspEditorAppId();
 
-		$sessionKey = Application::APP_ID . '_saved';
-		$saved = $this->session->get($sessionKey) === true;
-		$this->session->remove($sessionKey);
+		$saved = $this->session->get(Application::APP_ID . '_saved') === true;
+
+		$this->session->remove(Application::APP_ID . '_saved');
 
 		return new TemplateResponse(Application::APP_ID, 'admin', [
 			'head_html' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),
 			'body_before_html' => $this->config->getAppValue(Application::APP_ID, 'body_before_html', ''),
 			'body_after_html' => $this->config->getAppValue(Application::APP_ID, 'body_after_html', ''),
 			'saved' => $saved,
-			'csp_editor_detected' => $cspEditorAppId !== null,
-			'csp_editor_app_id' => $cspEditorAppId ?? '',
-			'csp_editor_url' => '/settings/admin/additional',
+			'csp_editor_detected' => $this->appManager->isInstalled('csp_editor') && $this->appManager->isEnabledForAnyone('csp_editor'),
 		]);
-	}
-
-	private function detectCspEditorAppId(): ?string {
-		foreach (['cspeditor', 'csp_editor', 'contentsecuritypolicyeditor'] as $appId) {
-			if ($this->appManager->isInstalled($appId) && $this->appManager->isEnabledForAnyone($appId)) {
-				return $appId;
-			}
-		}
-		return null;
 	}
 
 	public function getSection(): string {

@@ -22,14 +22,14 @@
 	<?php if ($_['csp_editor_detected']): ?>
 		<div class="codeinjector-notice codeinjector-notice--success">
 			<span class="icon icon-checkmark"></span>
-			<?php p($l->t('CSP Editor app detected and enabled (%s). You can manage advanced CSP rules there: ', [$_['csp_editor_app_id']])); ?>
-			<a href="<?php p($_['csp_editor_url']); ?>"><?php p($l->t('Open CSP Editor')); ?></a>
+			<?php p($l->t('CSP Editor app detected and enabled (csp_editor). You can manage advanced CSP rules there: ')); ?>
+			<a href="/settings/admin/additional"><?php p($l->t('Open CSP Editor')); ?></a>
 		</div>
 	<?php else: ?>
 		<div class="codeinjector-notice codeinjector-notice--warning">
 			<span class="icon icon-info"></span>
 			<?php p($l->t('CSP Editor app is not detected. Install/enable it if you prefer dedicated CSP management. If installed, open: ')); ?>
-			<a href="<?php p($_['csp_editor_url']); ?>"><?php p($l->t('CSP settings page')); ?></a>
+			<a href="/settings/admin/additional"><?php p($l->t('CSP settings page')); ?></a>
 		</div>
 	<?php endif; ?>
 
