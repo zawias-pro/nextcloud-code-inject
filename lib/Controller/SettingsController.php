@@ -14,7 +14,6 @@ use OCP\IRequest;
 use OCP\ISession;
 
 class SettingsController extends Controller {
-
 	public function __construct(
 		IRequest $request,
 		private readonly IConfig $config,
@@ -23,22 +22,18 @@ class SettingsController extends Controller {
 		parent::__construct(Application::APP_ID, $request);
 	}
 
-	/**
-	 * Persist all three HTML snippets. Only accessible to Nextcloud admins.
-	 */
 	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
 	public function save(
-		string $headHtml = '',
-		string $bodyBeforeHtml = '',
-		string $bodyAfterHtml = '',
+		string $headHtml,
+		string $bodyBeforeHtml,
+		string $bodyAfterHtml,
 	): RedirectResponse {
 		$this->config->setAppValue(Application::APP_ID, 'head_html', $headHtml);
 		$this->config->setAppValue(Application::APP_ID, 'body_before_html', $bodyBeforeHtml);
 		$this->config->setAppValue(Application::APP_ID, 'body_after_html', $bodyAfterHtml);
 
-		$this->session->set(Application::APP_ID . '_saved', true);
+		$this->session->set(Application::APP_ID.'_saved', true);
 
-		return new RedirectResponse('/settings/admin/' . Application::APP_ID);
+		return new RedirectResponse('/settings/admin/'.Application::APP_ID);
 	}
-
 }

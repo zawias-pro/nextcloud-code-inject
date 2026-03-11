@@ -13,7 +13,6 @@ use OCP\Settings\ISettings;
 use OCP\Util;
 
 class AdminSettings implements ISettings {
-
 	public function __construct(
 		private readonly IConfig $config,
 		private readonly IAppManager $appManager,
@@ -24,9 +23,9 @@ class AdminSettings implements ISettings {
 		Util::addStyle(Application::APP_ID, 'admin');
 		Util::addScript(Application::APP_ID, 'admin');
 
-		$saved = $this->session->get(Application::APP_ID . '_saved') === true;
+		$saved = $this->session->get(Application::APP_ID.'_saved') === true;
 
-		$this->session->remove(Application::APP_ID . '_saved');
+		$this->session->remove(Application::APP_ID.'_saved');
 
 		return new TemplateResponse(Application::APP_ID, 'admin', [
 			'head_html' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),

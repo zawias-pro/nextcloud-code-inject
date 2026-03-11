@@ -10,12 +10,10 @@ use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
 class AdminSection implements IIconSection {
-
 	public function __construct(
 		private readonly IL10N $l,
 		private readonly IURLGenerator $urlGenerator,
-	) {
-	}
+	) {}
 
 	public function getIcon(): string {
 		return $this->urlGenerator->imagePath(Application::APP_ID, 'app.svg');

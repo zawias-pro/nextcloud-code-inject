@@ -6,9 +6,11 @@
         "Save": "Zapisz",
         "Head HTML": "Kod HTML <head>",
         "Injected before </head> — use for <meta>, <link>, <script src>, analytics snippets, etc.": "Wstrzykiwany przed </head> — użyj dla <meta>, <link>, <script src>, fragmentów analityki itp.",
-        "Body HTML": "Kod HTML <body>",
+        "Top of Body HTML": "Kod HTML na początku <body>",
+        "Injected right after <body> — use for GTM scripts, skip-nav links, top banners, etc.": "Wstrzykiwany zaraz po <body> — użyj dla skryptów GTM, linków pomijania nawigacji, banerów górnych itp.",
+        "Bottom of Body HTML": "Kod HTML na końcu <body>",
         "Injected before </body> — use for chat widgets, cookie banners, GTM noscript tags, etc.": "Wstrzykiwany przed </body> — użyj dla widżetów czatu, banerów cookies, tagów noscript GTM itp.",
-        "CSP Editor app detected and enabled (%s). You can manage advanced CSP rules there: ": "Wykryto i włączono aplikację CSP Editor (%s). Możesz tam zarządzać zaawansowanymi regułami CSP: ",
+        "CSP Editor app detected and enabled (csp_editor). You can manage advanced CSP rules there: ": "Wykryto i włączono aplikację CSP Editor (csp_editor). Możesz tam zarządzać zaawansowanymi regułami CSP: ",
         "Open CSP Editor": "Otwórz CSP Editor",
         "CSP Editor app is not detected. Install/enable it if you prefer dedicated CSP management. If installed, open: ": "Nie wykryto aplikacji CSP Editor. Zainstaluj/włącz ją, jeśli wolisz dedykowane zarządzanie CSP. Jeśli jest zainstalowana, otwórz: ",
         "CSP settings page": "Strona ustawień CSP"
