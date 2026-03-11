@@ -41,31 +41,48 @@
 					<?php p($l->t('Injected before </head> — use for <meta>, <link>, <script src>, analytics snippets, etc.')); ?>
 				</span>
 			</label>
-		<textarea
-			id="codeinjector-head-html"
-			name="headHtml"
-			class="codeinjector-textarea"
-			rows="10"
-			spellcheck="false"
-			placeholder="<?php p($l->t('<script nonce="{{csp_nonce}}">/* Example inline script */</script>')); ?>"
-		><?php p($_['head_html']); ?></textarea>
+			<textarea
+				id="codeinjector-head-html"
+				name="headHtml"
+				class="codeinjector-textarea"
+				rows="10"
+				spellcheck="false"
+				placeholder="<?php p($l->t('<script nonce="{{csp_nonce}}">/* Example inline script */</script>')); ?>"
+			><?php p($_['head_html']); ?></textarea>
+		</div>
+
+		<div class="codeinjector-field">
+			<label for="codeinjector-body-top-html">
+				<strong><?php p($l->t('Top of Body HTML')); ?></strong>
+				<span class="codeinjector-sublabel">
+					<?php p($l->t('Injected right after <body> — use for GTM scripts, skip-nav links, top banners, etc.')); ?>
+				</span>
+			</label>
+			<textarea
+				id="codeinjector-body-top-html"
+				name="bodyBeforeHtml"
+				class="codeinjector-textarea"
+				rows="10"
+				spellcheck="false"
+				placeholder="<?php p($l->t('<!-- Example: Google Tag Manager -->')); ?>"
+			><?php p($_['body_before_html']); ?></textarea>
 		</div>
 
 		<div class="codeinjector-field">
 			<label for="codeinjector-body-html">
-				<strong><?php p($l->t('Body HTML')); ?></strong>
+				<strong><?php p($l->t('Bottom of Body HTML')); ?></strong>
 				<span class="codeinjector-sublabel">
 					<?php p($l->t('Injected before </body> — use for chat widgets, cookie banners, GTM noscript tags, etc.')); ?>
 				</span>
 			</label>
 			<textarea
 				id="codeinjector-body-html"
-				name="bodyHtml"
+				name="bodyAfterHtml"
 				class="codeinjector-textarea"
 				rows="10"
 				spellcheck="false"
 				placeholder="<?php p($l->t('<!-- Example: noscript fallback for GTM -->')); ?>"
-			><?php p($_['body_html']); ?></textarea>
+			><?php p($_['body_after_html']); ?></textarea>
 		</div>
 
 		<div class="codeinjector-actions">

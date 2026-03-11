@@ -26,9 +26,10 @@ class InjectMiddleware extends Middleware {
 	 */
 	public function beforeOutput(Controller $controller, string $methodName, string $output): string {
 		$headHtml = trim($this->config->getAppValue(Application::APP_ID, 'head_html', ''));
-		$bodyHtml = trim($this->config->getAppValue(Application::APP_ID, 'body_html', ''));
+		$bodyBeforeHtml = trim($this->config->getAppValue(Application::APP_ID, 'body_before_html', ''));
+		$bodyAfterHtml = trim($this->config->getAppValue(Application::APP_ID, 'body_after_html', ''));
 
-		if ($headHtml === '' && $bodyHtml === '') {
+		if ($headHtml === '' && $bodyBeforeHtml === '' && $bodyAfterHtml === '') {
 			return $output;
 		}
 
@@ -49,15 +50,20 @@ class InjectMiddleware extends Middleware {
 
 		if ($nonce !== '') {
 			$headHtml = str_replace('{{csp_nonce}}', $nonce, $headHtml);
-			$bodyHtml = str_replace('{{csp_nonce}}', $nonce, $bodyHtml);
+			$bodyBeforeHtml = str_replace('{{csp_nonce}}', $nonce, $bodyBeforeHtml);
+			$bodyAfterHtml = str_replace('{{csp_nonce}}', $nonce, $bodyAfterHtml);
 		}
 
 		if ($headHtml !== '' && str_contains($output, '</head>')) {
 			$output = str_replace('</head>', $headHtml . "\n</head>", $output);
 		}
 
-		if ($bodyHtml !== '' && str_contains($output, '</body>')) {
-			$output = str_replace('</body>', $bodyHtml . "\n</body>", $output);
+		if ($bodyBeforeHtml !== '') {
+			$output = preg_replace('/(<body[^>]*>)/i', '$1' . "\n" . $bodyBeforeHtml, $output, 1);
+		}
+
+		if ($bodyAfterHtml !== '' && str_contains($output, '</body>')) {
+			$output = str_replace('</body>', $bodyAfterHtml . "\n</body>", $output);
 		}
 
 		return $output;

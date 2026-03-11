@@ -24,13 +24,18 @@ class SettingsController extends Controller {
 	}
 
 	/**
-	 * Persist head and body HTML snippets. Only accessible to Nextcloud admins.
+	 * Persist all three HTML snippets. Only accessible to Nextcloud admins.
 	 */
 	#[AuthorizedAdminSetting(settings: AdminSettings::class)]
 	#[NoCSRFRequired]
-	public function save(string $headHtml = '', string $bodyHtml = ''): RedirectResponse {
+	public function save(
+		string $headHtml = '',
+		string $bodyBeforeHtml = '',
+		string $bodyAfterHtml = '',
+	): RedirectResponse {
 		$this->config->setAppValue(Application::APP_ID, 'head_html', $headHtml);
-		$this->config->setAppValue(Application::APP_ID, 'body_html', $bodyHtml);
+		$this->config->setAppValue(Application::APP_ID, 'body_before_html', $bodyBeforeHtml);
+		$this->config->setAppValue(Application::APP_ID, 'body_after_html', $bodyAfterHtml);
 
 		return new RedirectResponse('/settings/admin/' . Application::APP_ID . '?saved=1');
 	}
@@ -42,7 +47,8 @@ class SettingsController extends Controller {
 	public function load(): DataResponse {
 		return new DataResponse([
 			'headHtml' => $this->config->getAppValue(Application::APP_ID, 'head_html', ''),
-			'bodyHtml' => $this->config->getAppValue(Application::APP_ID, 'body_html', ''),
+			'bodyBeforeHtml' => $this->config->getAppValue(Application::APP_ID, 'body_before_html', ''),
+			'bodyAfterHtml' => $this->config->getAppValue(Application::APP_ID, 'body_after_html', ''),
 		]);
 	}
 }
