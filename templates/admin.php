@@ -34,6 +34,7 @@
 	<?php endif; ?>
 
 	<form id="codeinjector-form" method="post" action="/apps/codeinjector/settings">
+		<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>">
 		<div class="codeinjector-field">
 			<label for="codeinjector-head-html">
 				<strong><?php p($l->t('Head HTML')); ?></strong>
