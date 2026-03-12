@@ -21,17 +21,21 @@ services:
       interval: 5s
       retries: 10
   nextcloud:
-    image: *nextcloud_image
+    build:
+      context: ..
+      dockerfile: docker/nextcloud-dev.Dockerfile
+    image: nextcloud-codeinjector-dev
     restart: unless-stopped
     depends_on:
       db:
         condition: service_healthy
+    develop:
+      watch:
+        - path: ..
+          target: /var/www/html/custom_apps/codeinjector
+          action: sync
     ports:
       - "8080:80"
-    volumes:
-      - nc_data:/var/www/html
-      - ..:/var/www/html/custom_apps/codeinjector
-    user: "${HOST_UID}:${HOST_GID}"
     environment:
       NEXTCLOUD_ADMIN_USER: admin
       NEXTCLOUD_ADMIN_PASSWORD: admin
@@ -47,4 +51,3 @@ services:
       start_period: 30s
 volumes:
   db_data:
-  nc_data:

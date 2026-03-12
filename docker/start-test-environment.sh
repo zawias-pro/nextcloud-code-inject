@@ -2,10 +2,6 @@
 
 set -euo pipefail
 
-HOST_UID=$(id -u)
-HOST_GID=$(id -g)
-export HOST_UID HOST_GID
-
 OCC="docker compose exec --no-tty nextcloud php occ"
 
 echo "Removing old containers..."
@@ -14,7 +10,12 @@ echo "OK"
 echo ""
 
 echo "Starting containers..."
-docker compose up --detach
+docker compose up --detach --build
+echo "OK"
+echo ""
+
+echo "Starting file sync (docker compose watch)..."
+docker compose watch --no-up nextcloud >/dev/null 2>&1 &
 echo "OK"
 echo ""
 
