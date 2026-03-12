@@ -26,7 +26,7 @@ class InjectMiddleware extends Middleware {
 		}
 
 		$nonce = '';
-		if (preg_match('/<script[\s\S]*?nonce="([^"]+)"/i', $output, $matches)) {
+		if (preg_match('/<meta\b[^>]*\bname="csp-nonce"[^>]*\bnonce="([^"]+)"/i', $output, $matches)) {
 			$nonce = $matches[1];
 		} else {
             $this->logger->warning(

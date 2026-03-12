@@ -1,11 +1,11 @@
 (function () {
 	var dirty = false;
 
-	document.querySelectorAll('#codeinjector-form textarea').forEach(function (el) {
+	document.querySelectorAll('.codeinjector__wrapper textarea').forEach(function (el) {
 		el.addEventListener('input', function () { dirty = true; });
 	});
 
-	document.getElementById('codeinjector-form').addEventListener('submit', function () {
+	document.querySelector('.codeinjector__wrapper form').addEventListener('submit', function () {
 		dirty = false;
 	});
 

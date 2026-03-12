@@ -6,7 +6,6 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	background: var(--color-background-hover, #f8f8f8);
 	border-left: 4px solid var(--color-primary);
 	border-radius: var(--border-radius-small);
 	padding: 8px;
