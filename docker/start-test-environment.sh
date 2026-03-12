@@ -26,12 +26,17 @@ done
 echo "OK"
 echo ""
 
+echo "Disabling firstrunwizard..."
+$OCC app:disable firstrunwizard
+echo "OK"
+echo ""
+
 echo "Enabling codeinjector..."
 $OCC app:enable codeinjector
 echo "OK"
 echo ""
 
 echo "Done"
-echo " URL: http://localhost:8080"
+echo " URL: http://localhost:8080/settings/admin/codeinjector"
 echo " Login: admin"
 echo " Password: admin"
