@@ -13,4 +13,4 @@ Code Injector is a small Nextcloud admin app that lets you inject arbitrary HTML
 
 ## Development
 
-There is a docker development environment available. To start it, run `./setup.sh` from within the `docker` directory.
+There is a docker development environment available. To start it, run `./start-test-environment.sh` from within the `docker` directory.

@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+HOST_UID=$(id -u)
+HOST_GID=$(id -g)
+export HOST_UID HOST_GID
+
 OCC="docker compose exec --no-tty nextcloud php occ"
 
 echo "Removing old containers..."
