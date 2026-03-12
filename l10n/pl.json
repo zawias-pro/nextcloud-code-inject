@@ -1,5 +1,17 @@
 {
     "translations": {
-        "Code Injector": "Code Injector"
+        "Custom HTML": "Własny HTML",
+        "Injects custom HTML into every Nextcloud page, including the login page.": "Wstrzykuje podany kod HTML na każdą stronę Nextcloud, w tym stronę logowania.",
+        "Changes take effect immediately after saving.": "Zmiany wchodzą w życie natychmiast po zapisaniu.",
+        "Be careful! Invalid code can break the app for all users.": "Zachowaj ostrożność! Nieprawidłowy kod może zepsuć aplikację dla wszystkich użytkowników.",
+        "Use the %s placeholder wherever a CSP nonce is required.": "Użyj %s wszędzie tam, gdzie wymagany jest token nonce.",
+        "Saved": "Zapisano",
+        "CSP Editor is active. Manage your Content Security Policy rules:": "CSP Editor jest aktywny. Zarządzaj zasadami Content Security Policy:",
+        "CSP Editor": "CSP Editor",
+        "%s is not enabled. Enable it if your injected scripts require CSP rules.": "%s nie jest włączony. Włącz go, jeśli wstrzykiwane skrypty wymagają reguł CSP.",
+        "HTML in <head>": "HTML w <head>",
+        "HTML after <body> (opening tag)": "HTML po <body> (znacznikiem otwierającym)",
+        "HTML before </body> (closing tag)": "HTML przed </body> (znacznikiem zamykającym)",
+        "Save": "Zapisz"
     }
 }
