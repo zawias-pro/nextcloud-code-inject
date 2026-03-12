@@ -1,6 +1,12 @@
+x-images:
+  - &mariadb_image
+    mariadb:11
+  - &nextcloud_image
+    nextcloud:33-apache
+
 services:
   db:
-    image: mariadb:11
+    image: *mariadb_image
     restart: unless-stopped
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     volumes:
@@ -15,7 +21,7 @@ services:
       interval: 5s
       retries: 10
   nextcloud:
-    image: nextcloud:33-apache
+    image: *nextcloud_image
     restart: unless-stopped
     depends_on:
       db:
