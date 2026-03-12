@@ -25,6 +25,10 @@ class InjectMiddleware extends Middleware {
 			return $output;
 		}
 
+        if (!str_contains($output, '<html')) {
+            return $output;
+        }
+
 		$nonce = '';
 		if (preg_match('/<meta\b[^>]*\bname="csp-nonce"[^>]*\bnonce="([^"]+)"/i', $output, $matches)) {
 			$nonce = $matches[1];
