@@ -4,6 +4,14 @@ Code Injector is a small Nextcloud admin app that lets you inject arbitrary HTML
 
 ## Installation
 
+### From Nextcloud App Store
+
+The easiest way to install Code Injector is to use the Nextcloud App Store: https://apps.nextcloud.com/apps/codeinjector
+
+It's recommended to use the App Store, as it will automatically keep the app up to date. If you install it manually, you will have to update it yourself.
+
+### Manually
+
 1. Clone this repository into your Nextcloud `custom_apps` directory as `codeinjector`:
    ```bash
    git clone https://github.com/zawias-pro/nextcloud-code-inject.git codeinjector
