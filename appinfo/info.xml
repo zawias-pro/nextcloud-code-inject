@@ -18,7 +18,7 @@ Example use cases:
     <bugs>https://github.com/zawias-pro/nextcloud-code-inject/issues</bugs>
     <repository>https://github.com/zawias-pro/nextcloud-code-inject</repository>
     <dependencies>
-        <php min-version="8.1"/>
+        <php min-version="8.2"/>
         <nextcloud min-version="30" max-version="34"/>
     </dependencies>
     <settings>
