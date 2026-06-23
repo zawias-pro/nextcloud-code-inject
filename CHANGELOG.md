@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [1.1.2] – 2026-06-23
 ### Fixed
+- Version is now correctly set in info.xml
+
+## [1.1.2] – 2026-06-23
+### Fixed
 - Minimum PHP version changed to match Nextcloud 34
 
 ## [1.1.1] – 2026-06-23

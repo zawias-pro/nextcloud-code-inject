@@ -11,7 +11,7 @@ Example use cases:
 - Tag management containers
 - Customizations (e.g. styles)
 ]]></description>
-    <version>1.0.0</version>
+    <version>1.1.3</version>
     <licence>AGPL-3.0-or-later</licence>
     <author homepage="https://github.com/zawias-pro">Paweł Zawiślak</author>
     <category>customization</category>
