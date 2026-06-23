@@ -2,7 +2,7 @@ x-images:
   - &mariadb_image
     mariadb:11
   - &nextcloud_image
-    nextcloud:33-apache
+    nextcloud:34-apache
 
 services:
   db:

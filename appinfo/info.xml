@@ -2,9 +2,7 @@
 <info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>codeinjector</id>
-    <name lang="pl">Wstrzykiwacz kodu</name>
     <name>Code Injector</name>
-    <summary lang="pl">Wstrzyknij własny kod HTML do każdej strony</summary>
     <summary>Inject custom HTML into every page head or body</summary>
     <description><![CDATA[Allows administrators to inject arbitrary HTML code into the `<head>` or `<body>` of every Nextcloud page.
 
@@ -21,7 +19,7 @@ Example use cases:
     <repository>https://github.com/zawias-pro/nextcloud-code-inject</repository>
     <dependencies>
         <php min-version="8.1"/>
-        <nextcloud min-version="30" max-version="33"/>
+        <nextcloud min-version="30" max-version="34"/>
     </dependencies>
     <settings>
         <admin>OCA\Codeinjector\Settings\AdminSettings</admin>

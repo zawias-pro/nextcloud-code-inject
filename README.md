@@ -22,3 +22,9 @@ It's recommended to use the App Store, as it will automatically keep the app up 
 ## Development
 
 There is a docker development environment available. To start it, run `./start-test-environment.sh` from within the `docker` directory.
+
+You can set Nextcloud version in `docker/docker-compose.yml`.
+
+## Releasing
+
+This app uses [krankerl](https://github.com/ChristophWurst/krankerl) for release process.
